@@ -11,8 +11,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import me.alexnaupay.todox.ui.components.HelloWorldText
 import me.alexnaupay.todox.ui.theme.TodoXAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -22,7 +20,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             TodoXAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    HelloWorldText(modifier = Modifier.padding(innerPadding))
+                    Greeting("Alex", modifier = Modifier.padding(innerPadding))
                 }
             }
         }
