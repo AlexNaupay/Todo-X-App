@@ -10,7 +10,7 @@ class HomeScreenPreviewProvider : PreviewParameterProvider<HomeDataState> {
         get() = sequenceOf(
             HomeDataState(
                 date = "March 9, 2024",
-                summary = "5 incomplete, 5 completed",
+                summary = "5",
                 completedTask = completedTasks,
                 pendingTask = pendingTasks
             )

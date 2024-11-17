@@ -17,6 +17,7 @@ import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
+import kotlin.toString
 
 class HomeScreenViewModel : ViewModel() {
 
@@ -33,7 +34,8 @@ class HomeScreenViewModel : ViewModel() {
     init {
         state = state.copy(
             date = LocalDate.now().let {
-                DateTimeFormatter.ofPattern("EEEE, MMMM dd yyyy").format(it)
+                // https://developer.android.com/reference/kotlin/java/time/format/DateTimeFormatter
+                DateTimeFormatter.ofPattern("EEEE, MMM dd").format(it)
             }
         )
 
@@ -42,7 +44,7 @@ class HomeScreenViewModel : ViewModel() {
             val pendingTasks = it.filter { task -> !task.isCompleted }
 
             state = state.copy(
-                summary = "You have ${pendingTasks.size} pending tasks",
+                summary = pendingTasks.size.toString(),
                 completedTask = completedTasks,
                 pendingTask = pendingTasks,
             )
