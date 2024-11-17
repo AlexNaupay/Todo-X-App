@@ -11,36 +11,36 @@ class HomeScreenPreviewProvider : PreviewParameterProvider<HomeDataState> {
             HomeDataState(
                 date = "March 9, 2024",
                 summary = "5 incomplete, 5 completed",
-                completedTask = completedTask,
-                pendingTask = pendingTask
+                completedTask = completedTasks,
+                pendingTask = pendingTasks
             )
         )
 }
 
-val completedTask = mutableListOf<Task>()
+val pendingTasks = mutableListOf<Task>()
     .apply {
-        repeat(20) {
+        repeat(5) {
             add(
                 Task(
-                    id = it.toString(),
-                    title = "Task $it",
-                    description = "Description $it",
-                    category = Category.WORK,
+                    id = (it + 30).toString(),
+                    title = "Task ${it+30}",
+                    description = "Description ${it+30}",
+                    category = Category.OTHER,
                     isCompleted = false
                 )
             )
         }
     }
 
-val pendingTask = mutableListOf<Task>()
+val completedTasks = mutableListOf<Task>()
     .apply {
-        repeat(20) {
+        repeat(3) {
             add(
                 Task(
-                    id = (it + 30).toString(),
+                    id = it.toString(),
                     title = "Task $it",
                     description = "Description $it",
-                    category = Category.OTHER,
+                    category = Category.WORK,
                     isCompleted = true
                 )
             )

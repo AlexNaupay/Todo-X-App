@@ -6,9 +6,15 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import me.alexnaupay.todox.domain.Task
 import me.alexnaupay.todox.domain.TaskLocalDataSource
+import me.alexnaupay.todox.presentation.screens.home.providers.completedTasks
+import me.alexnaupay.todox.presentation.screens.home.providers.pendingTasks
 
 object FakeTaskLocalDataSource: TaskLocalDataSource {
     private val _tasksFlow = MutableStateFlow<List<Task>>(emptyList())
+
+    init {
+        _tasksFlow.value = completedTasks + pendingTasks
+    }
 
     override val tasksFlow: Flow<List<Task>>
         get() = _tasksFlow
@@ -25,7 +31,7 @@ object FakeTaskLocalDataSource: TaskLocalDataSource {
         val taskIndex = tasks.indexOfFirst { it.id == updatedTask.id }
         if (taskIndex != -1) {
             tasks[taskIndex] = updatedTask
-            delay(1000L)
+            delay(350L)
             _tasksFlow.value = tasks
         }
     }
@@ -33,7 +39,7 @@ object FakeTaskLocalDataSource: TaskLocalDataSource {
     override suspend fun removeTask(task: Task) {
         val tasks = _tasksFlow.value.toMutableList()
         tasks.remove(task)
-        delay(1000L)
+        delay(250L)
         _tasksFlow.value = tasks
     }
 
@@ -43,7 +49,7 @@ object FakeTaskLocalDataSource: TaskLocalDataSource {
     }
 
     override suspend fun getTaskById(taskId: String): Task? {
-        delay(1000L)
+        delay(250L)
         return _tasksFlow.value.find { it.id == taskId }
     }
 }

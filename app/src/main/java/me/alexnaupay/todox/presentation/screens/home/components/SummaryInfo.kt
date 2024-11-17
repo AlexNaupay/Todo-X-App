@@ -99,7 +99,7 @@ fun SummaryInfo(
                 style = MaterialTheme.typography.headlineLarge,
                 color = MaterialTheme.colorScheme.onSurface,
                 fontWeight = FontWeight.Bold,
-                fontSize = 12.sp
+                fontSize = 16.sp
             )
         }
 
