@@ -38,9 +38,9 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import me.alexnaupay.todox.R
 import me.alexnaupay.todox.domain.Task
-import me.alexnaupay.todox.presentation.screens.home.SectionTitle
-import me.alexnaupay.todox.presentation.screens.home.SummaryInfo
-import me.alexnaupay.todox.presentation.screens.home.TaskItem
+import me.alexnaupay.todox.presentation.screens.home.components.SectionTitle
+import me.alexnaupay.todox.presentation.screens.home.components.SummaryInfo
+import me.alexnaupay.todox.presentation.screens.home.components.TaskItem
 import me.alexnaupay.todox.presentation.screens.home.providers.HomeScreenPreviewProvider
 import me.alexnaupay.todox.ui.theme.TodoXAppTheme
 

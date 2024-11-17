@@ -21,6 +21,10 @@ import kotlinx.coroutines.launch
 import me.alexnaupay.todox.data.FakeTaskLocalDataSource
 import me.alexnaupay.todox.ui.theme.TodoXAppTheme
 import me.alexnaupay.todox.domain.Task
+import me.alexnaupay.todox.presentation.screens.home.HomeDataState
+import me.alexnaupay.todox.presentation.screens.home.HomeScreen
+import me.alexnaupay.todox.presentation.screens.home.providers.completedTask
+import me.alexnaupay.todox.presentation.screens.home.providers.pendingTask
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -66,12 +70,7 @@ class MainActivity : ComponentActivity() {
                 }
 
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Text(
-                        text = text,
-                        modifier = Modifier
-                            .padding(innerPadding)
-                            .fillMaxSize()
-                    )
+                    MainUI(modifier = Modifier.padding(innerPadding))
                 }
             }
         }
@@ -79,17 +78,20 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
+fun MainUI(modifier: Modifier = Modifier) {
+    val state = HomeDataState(
+        date = "March 9, 2024",
+        summary = "5 incomplete, 5 completed",
+        completedTask = completedTask,
+        pendingTask = pendingTask
     )
+    HomeScreen(state = state)
 }
 
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     TodoXAppTheme {
-        Greeting("Android")
+        MainUI()
     }
 }

@@ -1,5 +1,6 @@
-package me.alexnaupay.todox.presentation.screens.home
+package me.alexnaupay.todox.presentation.screens.home.components
 
+import android.content.res.Configuration
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -22,7 +23,6 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
-import me.alexnaupay.todox.domain.Category.WORK
 import me.alexnaupay.todox.domain.Task
 import me.alexnaupay.todox.presentation.screens.home.providers.TaskItemPreviewProvider
 import me.alexnaupay.todox.ui.theme.TodoXAppTheme
@@ -114,7 +114,7 @@ fun TaskItem(
 @Composable
 @Preview(
     showBackground = true,
-    uiMode = android.content.res.Configuration.UI_MODE_NIGHT_NO,
+    uiMode = Configuration.UI_MODE_NIGHT_NO,
 )
 fun TaskItemPreviewLight(
     @PreviewParameter(TaskItemPreviewProvider::class) task: Task
@@ -132,7 +132,7 @@ fun TaskItemPreviewLight(
 @Composable
 @Preview(
     showBackground = true,
-    uiMode = android.content.res.Configuration.UI_MODE_NIGHT_YES
+    uiMode = Configuration.UI_MODE_NIGHT_YES
 )
 fun TaskItemPreviewDark(
     @PreviewParameter(TaskItemPreviewProvider::class) task: Task
