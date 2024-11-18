@@ -7,6 +7,6 @@ data class TaskScreenState(
     val taskName: TextFieldState = TextFieldState(),
     val taskDescription: TextFieldState = TextFieldState(),
     val isTaskDone: Boolean = false,
-    val category: Category? = null,
+    val category: Category? = Category.PERSONAL,
     val canSaveTask: Boolean = false
 )
