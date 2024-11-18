@@ -51,7 +51,7 @@ import me.alexnaupay.todox.presentation.screens.detail.providers.TaskScreenState
 import me.alexnaupay.todox.ui.theme.TodoXAppTheme
 
 @Composable
-fun TaskScreenRoot(){
+fun TaskScreenRoot(navigateBack: () -> Boolean){
     val viewModel = viewModel<TaskViewModel>()
     val state = viewModel.state
     val event = viewModel.event
@@ -67,13 +67,26 @@ fun TaskScreenRoot(){
                         context.getString(R.string.task_created),
                         Toast.LENGTH_SHORT
                     ).show()
+
+                    navigateBack()
                 }
+
             }
         }
     }
     TaskScreen(
         state = state,
-        onAction = viewModel::onAction
+        // onAction = viewModel::onAction
+        onAction = { action ->
+            when(action){
+                is ActionTask.Back -> {
+                    navigateBack()
+                }
+                else -> {
+                    viewModel.onAction(action)
+                }
+            }
+        }
     )
 }
 
@@ -199,6 +212,7 @@ fun TaskScreen(
                                                     category = category
                                                 )
                                             )
+                                            isExpanded = false
                                         }
                                     )
                                 }
@@ -275,9 +289,7 @@ fun TaskScreen(
             Button(
                 enabled = state.canSaveTask,
                 onClick = {
-                    onAction(
-                        ActionTask.SaveTask
-                    )
+                    onAction(ActionTask.SaveTask)  // Action
                 },
                 modifier = Modifier.fillMaxWidth()
                     .padding(46.dp)

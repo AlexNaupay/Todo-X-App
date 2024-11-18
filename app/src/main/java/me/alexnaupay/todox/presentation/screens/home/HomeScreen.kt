@@ -51,7 +51,7 @@ import me.alexnaupay.todox.presentation.screens.home.providers.HomeScreenPreview
 import me.alexnaupay.todox.ui.theme.TodoXAppTheme
 
 @Composable
-fun HomeScreenRoot(){
+fun HomeScreenRoot( navigateToTaskScreen: () -> Unit){
     val viewModel:HomeScreenViewModel = viewModel<HomeScreenViewModel>()
     val state = viewModel.state
     val event = viewModel.events
@@ -75,7 +75,15 @@ fun HomeScreenRoot(){
     }
     HomeScreen(
         state = state,
-        onAction = viewModel::onAction
+        // onAction = viewModel::onAction
+        onAction = { action ->
+            when(action){
+                HomeScreenAction.OnAddTask->{
+                    navigateToTaskScreen()
+                }
+                else -> viewModel.onAction(action)
+            }
+        }
     )
 }
 
@@ -210,7 +218,7 @@ fun HomeScreen(
         },
         floatingActionButton = {
             FloatingActionButton(
-                onClick = { }
+                onClick = { onAction(HomeScreenAction.OnAddTask) }
             ) {
                 Icon(imageVector = Icons.Default.Add, contentDescription = "Add Task")
             }

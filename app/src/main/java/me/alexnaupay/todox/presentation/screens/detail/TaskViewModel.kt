@@ -45,8 +45,8 @@ class TaskViewModel : ViewModel() {
                 is ActionTask.SaveTask -> {
                     val task= Task(
                         id = UUID.randomUUID().toString(),
-                        title = state.taskName.toString(),
-                        description = state.taskDescription.toString(),
+                        title = state.taskName.text.toString(),
+                        description = state.taskDescription.text.toString(),
                         isCompleted = state.isTaskDone,
                         category = state.category
                     )
