@@ -7,4 +7,10 @@
     <string name="all_task_deleted">All tasks deleted</string>
     <string name="task_updated">Task updated</string>
     <string name="summary_info">You have %s pending tasks</string>
+    <string name="task_name">Task name</string>
+    <string name="task_description">Task description</string>
+    <string name="task">Task</string>
+    <string name="done">Completed:</string>
+    <string name="category">Category</string>
+    <string name="save">Save</string>
 </resources>
